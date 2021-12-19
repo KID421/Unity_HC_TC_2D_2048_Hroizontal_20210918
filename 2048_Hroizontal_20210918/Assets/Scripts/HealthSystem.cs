@@ -8,7 +8,7 @@ using UnityEngine.Events;
 /// </summary>
 public class HealthSystem : MonoBehaviour
 {
-    [Header("血量"), Range(0, 500)]
+    [Header("血量"), Range(0, 5000)]
     public float hp = 100;
     [Header("要控制的血量與血條")]
     public Text textHp;

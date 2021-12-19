@@ -40,19 +40,32 @@ public class AttackSystem : MonoBehaviour
     }
     #endregion
 
-
     [Header("攻擊開始事件")]
     public UnityEvent onAttackStart;
     [Header("攻擊完成事件")]
     public UnityEvent onAttackFinish;
 
+    private bool isStop;
+
     #region 方法：公開
+    /// <summary>
+    /// 停止攻擊
+    /// </summary>
+    public void StopAttack()
+    {
+        isStop = true;          // 已經停止
+        StopAllCoroutines();    // 停止所有協程
+        enabled = false;        // 關閉腳本
+    }
+
     // virtual 虛擬：允許子類別複寫
     /// <summary>
     /// 攻擊方法
     /// </summary>
     public virtual void Attack(float increase = 0)
     {
+        if (isStop) return;     // 如果 停止 就跳出
+
         // 啟動 協同程序
         StartCoroutine(DelayAttack());
     }
