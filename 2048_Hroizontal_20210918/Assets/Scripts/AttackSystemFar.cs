@@ -19,6 +19,8 @@ public class AttackSystemFar : AttackSystem
     {
         // base.Attack();      // base 基底：父類別的內容
 
+        onAttackStart.Invoke();
+
         // 生成(物件，座標，角度)
         // 生成的物件名稱後方會有 (Clone)
         // Quaternion 四元數

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /// <summary>
 /// 血量系統
@@ -17,6 +18,8 @@ public class HealthSystem : MonoBehaviour
     [Header("動畫參數")]
     public string parameterDamage = "受傷觸發";
     public string parameterDead = "死亡觸發";
+    [Header("死亡事件")]
+    public UnityEvent onDead;
 
     private float hpMax;
     private Animator ani;
@@ -68,6 +71,7 @@ public class HealthSystem : MonoBehaviour
     /// </summary>
     private void Dead()
     {
+        onDead.Invoke();
         ani.SetTrigger(parameterDead);
     }
 }

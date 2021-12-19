@@ -40,6 +40,9 @@ public class AttackSystem : MonoBehaviour
     }
     #endregion
 
+
+    [Header("攻擊開始事件")]
+    public UnityEvent onAttackStart;
     [Header("攻擊完成事件")]
     public UnityEvent onAttackFinish;
 
@@ -58,10 +61,14 @@ public class AttackSystem : MonoBehaviour
     {
         // 延遲 3.5 秒
         yield return new WaitForSeconds(delayAttack);
+        
         // 攻擊動畫
         ani.SetTrigger(parameterAttack);
         // 延遲 0.5 秒
         yield return new WaitForSeconds(delaySendDamage);
+        
+        onAttackStart.Invoke();
+
         // 傳送傷害
         targetHealthSystem.Hurt(attack);
         onAttackFinish.Invoke();
