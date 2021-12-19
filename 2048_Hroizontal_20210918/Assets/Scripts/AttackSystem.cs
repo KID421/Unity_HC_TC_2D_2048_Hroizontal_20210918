@@ -51,7 +51,7 @@ public class AttackSystem : MonoBehaviour
     /// <summary>
     /// 攻擊方法
     /// </summary>
-    public virtual void Attack()
+    public virtual void Attack(float increase = 0)
     {
         // 啟動 協同程序
         StartCoroutine(DelayAttack());
